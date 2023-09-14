@@ -4,8 +4,8 @@ import Cell from "./components/Cell";
 const App = () => {
   const [turn, setTurn] = useState("X");
   const [winner, setWinner] = useState("");
-  const playerX: Set<number> = new Set<number>();
-  const playerO: Set<number> = new Set<number>();
+  const [playerX, setPlayerX] = useState(new Set<number>());
+  const [playerO, setPlayerO] = useState(new Set<number>());
   return (
     <div className="flex  items-center h-screen bg-slate-400 ">
       <div className=" ml-10">
@@ -30,13 +30,22 @@ const App = () => {
               id={i + 1}
               playerX={playerX}
               playerO={playerO}
+              setPlayerO={setPlayerO}
+              setPlayerX={setPlayerX}
               setWinner={setWinner}
             />
           ))}
         </div>
       </div>
-      <div className=" h-36 w-36">
-        {winner !== "" && <span>Winner is {winner}</span>}
+      <div className="  text-white font-medium text-5xl px-3">
+        {winner !== "" && (
+          <span>
+            Winner is{" "}
+            <span className="text-black text-semibold mx-3 inline-block w-10 text-center">
+              {winner}
+            </span>
+          </span>
+        )}
       </div>
     </div>
   );

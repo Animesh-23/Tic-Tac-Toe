@@ -5,6 +5,8 @@ const Cell = (props: {
   id: number;
   playerO: Set<number>;
   playerX: Set<number>;
+  setPlayerX: React.Dispatch<React.SetStateAction<Set<number>>>;
+  setPlayerO: React.Dispatch<React.SetStateAction<Set<number>>>;
   setWinner: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const [val, setVal] = useState("");
@@ -63,7 +65,7 @@ const Cell = (props: {
           props.playerO.has(9)) ||
         (props.playerO.has(3) && props.playerO.has(5) && props.playerO.has(7))
       ) {
-        props.setWinner("X");
+        props.setWinner("O");
       }
     }
   }
